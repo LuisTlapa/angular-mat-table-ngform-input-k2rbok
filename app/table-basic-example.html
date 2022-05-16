@@ -1,0 +1,60 @@
+<form [formGroup]="form">
+
+  <mat-card class="mat-elevation-z8">
+
+    <mat-table
+      #table
+      class="mat-elevation-z0"
+      [dataSource]="dataSource" [trackBy]="trackRows">
+
+      <!-- Product Column -->
+      <ng-container matColumnDef="product">
+        <!-- <mat-header-cell *matHeaderCellDef>Product</mat-header-cell> -->
+        <mat-cell *matCellDef="let row; let i = index"> 
+          <ng-container [formGroup]="row">
+            <mat-form-field>
+              <mat-label>Product</mat-label>
+              <input matInput placeholder="Product"
+                id="product_id_{{i}}"
+                name="product_id_{{i}}"
+                formControlName="product_id" required />
+            </mat-form-field>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Unit Column -->
+      <ng-container matColumnDef="unit">
+        <!-- <mat-header-cell *matHeaderCellDef>Unit</mat-header-cell> -->
+        <mat-cell *matCellDef="let row; let i = index"> 
+          <ng-container [formGroup]="row">
+            <mat-form-field>
+              <mat-label>Unit</mat-label>
+              <input matInput placeholder="Unit"
+                id="product_id_{{i}}"
+                name="product_id_{{i}}"
+                formControlName="unit" required />
+            </mat-form-field>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Header Declarations -->
+      <!-- 
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      -->
+       
+      <!-- Row Declarations -->
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary"
+        (click)="createRow()">
+        <mat-icon>add</mat-icon>
+        Add New
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</form>
